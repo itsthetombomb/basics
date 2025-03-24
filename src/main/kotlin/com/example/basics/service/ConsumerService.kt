@@ -29,3 +29,16 @@ class ConsumerService(private val consumerRepository: ConsumerRepository){
         return consumerRepository.findAll(pageable)
     }
 }
+
+
+// Cursor vs Offset Based Pagination
+
+// Offset Based:
+// Jump to any page directly, which is useful for ui pannels
+// Poor preformance on large data, database must skip over potentially huge number of records
+// If the underlying data changes between requests, the results might be inconsistent
+
+// Cursor Based:
+// use a pointer to remember the last item, better consistency
+// Scales better and reduces data inconstancy when items are added or removed
+

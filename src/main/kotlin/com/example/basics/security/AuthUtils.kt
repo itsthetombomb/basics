@@ -18,7 +18,9 @@ import org.springframework.security.web.SecurityFilterChain
 class SecurityConfig {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        http.authorizeHttpRequests { auth ->
+        http
+            .csrf { csrf -> csrf.disable() }
+            .authorizeHttpRequests { auth ->
             auth.requestMatchers("/api/v1/consumers").hasRole("ADMIN")
             auth.anyRequest().authenticated()
         }

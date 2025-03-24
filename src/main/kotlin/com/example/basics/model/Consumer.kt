@@ -21,7 +21,6 @@ data class Consumer(
     @Column(unique = true)
     val email: String,
 
-    @field:NotBlank(message = "Age can not be blank")
     val age: Int,
 )
 
